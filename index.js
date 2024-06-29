@@ -25,6 +25,7 @@ program
     execSync("npm install", { stdio: "inherit", cwd: projectPath });
 
     console.log(`Basic Express project setup complete in ${projectName}`);
+    console.log(`To get started, run: \n\ncd ${projectName} && npm start`);
   });
 
 program.parse(process.argv);
