@@ -1,6 +1,6 @@
 {
   "name": "express-basic-starter",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "CLI to set up a basic Express project with MVC structure",
   "main": "index.js",
   "bin": {

@@ -9,6 +9,7 @@ exports.getTest = (req, res, next) => {
       .status(200)
       .json(generateResponse(200, true, "Test route is working!", data));
   } catch (error) {
+    error.message = null;
     next(error);
   }
 };
