@@ -26,7 +26,6 @@ npx express-basic-starter <project-name>
 ## Usage
 Create a new Express project with the CLI:
 
-init-express-basic my-express-app
 npx express-basic-starter my-express-app
 
 
