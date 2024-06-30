@@ -6,7 +6,7 @@ const { execSync } = require("child_process");
 const { program } = require("commander");
 
 program
-  .version("1.0.8")
+  .version("1.1.0")
   .description("CLI to set up a basic Express project")
   .argument("<project-name>", "name of the project")
   .action((projectName) => {
