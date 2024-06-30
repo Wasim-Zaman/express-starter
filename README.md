@@ -40,6 +40,7 @@ my-express-app
 │ └── swagger.js
 ├── controllers
 │ └── sampleController.js
+└── docs
 ├── models
 │ └── sampleModel.js
 ├── routes
