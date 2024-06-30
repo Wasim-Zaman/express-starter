@@ -1,11 +1,28 @@
 {
   "name": "express-basic-starter",
   "version": "1.0.8",
-  "description": "CLI to set up a basic Express project with MVC structure",
+  "description": "CLI to set up a basic Express project with MVC structure and Swagger documentation",
   "main": "index.js",
   "bin": {
-    "init-express-basic": "./index.js"
+    "express-basic-starter": "./index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wasim-Zaman/express-starter.git"
+  },
+  "keywords": [
+    "express",
+    "express.js",
+    "starter",
+    "mvc",
+    "swagger",
+    "cli",
+    "setup",
+    "node.js"
+  ],
+  "author": "Wasim Zaman",
+  "license": "MIT",
+  "homepage": "https://github.com/Wasim-Zaman/express-starter#readme",
   "dependencies": {
     "commander": "^8.0.0",
     "fs-extra": "^10.0.0"
