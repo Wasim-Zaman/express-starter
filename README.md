@@ -30,7 +30,7 @@ npx express-basic-starter <project-name>
 
 ## Project Folder Structure
 
-'''bash
+```bash
 my-express-app
 ├── app.js
 ├── package.json
@@ -47,4 +47,4 @@ my-express-app
 │ └── sampleRoute.js
 ├── utils
 │ └── response.js
-'''
+```
