@@ -19,14 +19,31 @@ Install the CLI tool globally to use it from anywhere:
 ```bash
 npm install -g express-basic-starter
 
-Alternatively, you can use npx to run the tool without installing it globally:
-npx express-basic-starter <project-name>
-
-
-## Usage
-Create a new Express project with the CLI:
-
-npx express-basic-starter my-express-app
-
-
+express-basic-starter <project-name>
 ```
+
+Alternatively, you can use npx to run the tool without installing it globally:
+
+```bash
+npx express-basic-starter <project-name>
+```
+
+## Project Folder Structure
+
+'''bash
+my-express-app
+├── app.js
+├── package.json
+├── package-lock.json
+├── .gitignore
+├── controllers
+│ └── swagger.js
+├── controllers
+│ └── sampleController.js
+├── models
+│ └── sampleModel.js
+├── routes
+│ └── sampleRoute.js
+├── utils
+│ └── response.js
+'''
