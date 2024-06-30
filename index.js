@@ -6,7 +6,7 @@ const { execSync } = require("child_process");
 const { program } = require("commander");
 
 program
-  .version("1.1.0")
+  .version("1.1.1")
   .description("CLI to set up a basic Express project")
   .argument("<project-name>", "name of the project")
   .action((projectName) => {
@@ -25,7 +25,7 @@ program
     execSync("npm install", { stdio: "inherit", cwd: projectPath });
 
     console.log(`Basic Express project setup complete in ${projectName}`);
-    console.log(`To get started, run: \n\ncd ${projectName} && npm start`);
+    console.log(`To get started, run: \n\ncd ${projectName} && npm i`);
   });
 
 program.parse(process.argv);
