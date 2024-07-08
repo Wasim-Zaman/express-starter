@@ -6,7 +6,7 @@ const { execSync } = require("child_process");
 const { program } = require("commander");
 
 program
-  .version("1.1.1")
+  .version("1.1.2")
   .description("CLI to set up a basic Express project")
   .argument("<project-name>", "name of the project")
   .action((projectName) => {
@@ -22,10 +22,18 @@ program
 
     fs.copySync(templatePath, projectPath);
 
+    const packageJsonPath = path.join(projectPath, "package.json");
+    const packageJson = fs.readJsonSync(packageJsonPath);
+
+    packageJson.name = projectName;
+    packageJson.main = "app.js";
+
+    fs.writeJsonSync(packageJsonPath, packageJson, { spaces: 2 });
+
     execSync("npm install", { stdio: "inherit", cwd: projectPath });
 
     console.log(`Basic Express project setup complete in ${projectName}`);
-    console.log(`To get started, run: \n\ncd ${projectName} && npm i`);
+    console.log(`To get started, run: \n\ncd ${projectName} && npm start`);
   });
 
 program.parse(process.argv);
