@@ -1,6 +1,6 @@
 {
   "name": "express-basic-starter",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "CLI to set up a basic Express project with MVC structure and Swagger documentation",
   "main": "index.js",
   "bin": {
@@ -18,7 +18,8 @@
     "swagger",
     "cli",
     "setup",
-    "node.js"
+    "node.js",
+    "express basic"
   ],
   "author": "Wasim Zaman",
   "license": "MIT",
