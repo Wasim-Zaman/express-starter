@@ -15,6 +15,11 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Create folder with name images
+fs.ensureDirSync(path.join(__dirname, "images"));
+// Serve images folder as static files
+app.use("/images", express.static(path.join(__dirname, "images")));
+
 app.use(testRoutes);
 // Add your routes...
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
