@@ -1,4 +1,5 @@
 const path = require("path");
+const fs = require("fs");
 
 const express = require("express");
 const swaggerUi = require("swagger-ui-express");
@@ -15,10 +16,8 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Create folder with name images
-fs.ensureDirSync(path.join(__dirname, "images"));
-// Serve images folder as static files
-app.use("/images", express.static(path.join(__dirname, "images")));
+// Create folder with name images and uncomment below line for serving image statically
+// app.use("/images", express.static(path.join(__dirname, "images")));
 
 app.use(testRoutes);
 // Add your routes...
