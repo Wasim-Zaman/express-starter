@@ -16,8 +16,8 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Create folder with name images and uncomment below line for serving image statically
-// app.use("/images", express.static(path.join(__dirname, "images")));
+// Create folder with name uploads and uncomment below line for serving files statically
+// app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use(testRoutes);
 // Add your routes...
