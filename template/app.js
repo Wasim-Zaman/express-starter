@@ -1,13 +1,13 @@
 const path = require("path");
-const fs = require("fs");
 
 const express = require("express");
 const swaggerUi = require("swagger-ui-express");
 const bodyParser = require("body-parser");
 require("dotenv").config();
 
+const MyError = require("./utils/error");
 const swaggerSpec = require("./config/swagger");
-const generateResponse = require("./utils/response");
+const response = require("./utils/response");
 const testRoutes = require("./routes/sample");
 
 const app = express();
@@ -16,8 +16,8 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Create folder with name uploads and uncomment below line for serving files statically
-// app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+// If you want to change the default uploads directory, you can do so here
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use(testRoutes);
 // Add your routes...
@@ -30,13 +30,20 @@ app.use((req, res, next) => {
 });
 
 app.use((error, req, res, next) => {
-  const status = error.statusCode || 500;
-  const message =
-    error.message ||
-    "An error occurred while trying to process your request. Please try again later.";
-  const data = null;
-  const success = false;
-  res.status(status).json(generateResponse(status, success, message, data));
+  console.log(error);
+  let status = 500;
+  let message =
+    "An error occurred while processing your request. Please try again later.";
+  let data = null;
+  let success = false;
+
+  if (error instanceof MyError) {
+    status = error.statusCode || 500;
+    message = error.message || message;
+    data = error.data || null;
+  }
+
+  res.status(status).json(response(status, success, message, data));
 });
 
 app.listen(port, function () {
