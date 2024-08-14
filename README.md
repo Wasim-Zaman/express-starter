@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/express-basic-starter.svg)](https://badge.fury.io/js/express-basic-starter)
 
-Express Basic Starter is a command-line interface (CLI) tool that simplifies the process of setting up a basic Express.js project with a structured folder layout, essential packages, and Swagger documentation.
+Express Basic Starter is a command-line interface (CLI) tool that simplifies the process of setting up a basic Express.js project with a structured folder layout, essential packages, and Swagger documentation, fully compatible with ES modules.
 
 ## Features
 
@@ -11,6 +11,7 @@ Express Basic Starter is a command-line interface (CLI) tool that simplifies the
 - **Basic Packages**: Includes essential npm packages pre-configured.
 - **Swagger Documentation**: Integrated Swagger documentation for APIs.
 - **Customizable**: Easily extend or modify the generated project structure.
+- **ES Module Support**: Fully compatible with ES module syntax.
 
 ## Installation
 
@@ -28,23 +29,34 @@ Alternatively, you can use npx to run the tool without installing it globally:
 npx express-basic-starter <project-name>
 ```
 
-## Project Folder Structure
+## Usage with ES Modules
+
+To create a project using ES module syntax, use the --es flag:
 
 ```bash
+npx express-basic-starter <project-name> --es
+```
+
+## Project Folder Structure
+
+```
 my-express-app
 ├── app.js
 ├── package.json
 ├── package-lock.json
 ├── .gitignore
 ├── controllers
-│ └── swagger.js
-├── controllers
 │ └── sampleController.js
-└── docs
+├── docs
+│ └── swagger
+│       └── testDocs.js
 ├── models
 │ └── sampleModel.js
 ├── routes
 │ └── sampleRoute.js
 ├── utils
+│ └── error.js
+│ └── jwt.js
 │ └── response.js
+└── uploads
 ```
