@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const fs = require("fs-extra");
 const path = require("path");
 const { program } = require("commander");
@@ -16,11 +18,11 @@ function validateProjectName(name) {
 }
 
 program
-  .version("1.5.0")
+  .version("1.8.0")
   .description("CLI to set up a basic Express project")
   .argument("<project-name>", "name of the project")
   .option("--es", "create the project with ES syntax")
-  .action((projectName, options) => {
+  .action(async (projectName, options) => {
     try {
       validateProjectName(projectName);
       const projectPath = path.join(process.cwd(), projectName);
@@ -41,13 +43,13 @@ program
       }
 
       // Create project directory and copy template
-      fs.mkdirSync(projectPath);
-      fs.copySync(templatePath, projectPath);
+      await fs.mkdirp(projectPath);
+      await fs.copy(templatePath, projectPath);
 
       // Update package.json
       const packageJsonPath = path.join(projectPath, "package.json");
       if (fs.existsSync(packageJsonPath)) {
-        const packageJson = fs.readJsonSync(packageJsonPath);
+        const packageJson = await fs.readJson(packageJsonPath);
         packageJson.name = projectName;
         packageJson.version = "1.0.0";
         packageJson.description = "Express.js application";
@@ -60,15 +62,19 @@ program
           test: 'echo "Error: no test specified" && exit 1',
         };
 
-        fs.writeJsonSync(packageJsonPath, packageJson, { spaces: 2 });
+        await fs.writeJson(packageJsonPath, packageJson, { spaces: 2 });
       }
 
       // Create .env.example file
       const envExamplePath = path.join(projectPath, ".env.example");
-      fs.writeFileSync(
+      await fs.writeFile(
         envExamplePath,
         "PORT=3000\nJWT_SECRET=your-secret-key\nLOCALHOST=http://localhost:3000\n"
       );
+
+      // Create uploads directory
+      const uploadsDir = path.join(projectPath, "uploads");
+      await fs.mkdirp(uploadsDir);
 
       console.log("\nExpress project setup complete! 🚀");
       console.log("\nNext steps:");

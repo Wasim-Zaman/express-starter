@@ -1,10 +1,11 @@
 {
   "name": "express-basic-starter",
-  "version": "1.5.0",
-  "description": "CLI to set up a basic Express project with MVC structure and Swagger documentation",
+  "version": "1.8.0",
+  "description": "CLI to set up a basic Express project with MVC structure, Swagger documentation, and support for ES Modules/CommonJS",
   "main": "index.js",
+  "type": "commonjs",
   "bin": {
-    "express-basic-starter": "./index.js"
+    "express-basic-starter": "index.js"
   },
   "repository": {
     "type": "git",
@@ -19,13 +20,26 @@
     "cli",
     "setup",
     "node.js",
-    "express basic"
+    "express basic",
+    "es modules",
+    "commonjs"
   ],
   "author": "Wasim Zaman",
   "license": "MIT",
   "homepage": "https://github.com/Wasim-Zaman/express-starter#readme",
   "dependencies": {
-    "commander": "^8.3.0",
-    "fs-extra": "^10.1.0"
-  }
+    "commander": "^11.1.0",
+    "fs-extra": "^11.2.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/Wasim-Zaman/express-starter/issues"
+  },
+  "files": [
+    "index.js",
+    "template-es",
+    "template-commonjs"
+  ]
 }
